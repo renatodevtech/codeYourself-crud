@@ -1,23 +1,39 @@
+@if (!isChange) {
 <h2 mat-dialog-title>Create Element</h2>
+} @else {
+<h2 mat-dialog-title>Edit Element</h2>
+}
 <mat-dialog-content>
   <mat-form-field>
     <mat-label>Position</mat-label>
-    <input matInput [(ngModel)]="data.position">
+    <input matInput [(ngModel)]="data.position" />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="data.name">
+    <input matInput [(ngModel)]="data.name" />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Weight</mat-label>
-    <input matInput [(ngModel)]="data.weight">
+    <input matInput [(ngModel)]="data.weight" />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Symbol</mat-label>
-    <input matInput [(ngModel)]="data.symbol">
+    <input matInput [(ngModel)]="data.symbol" />
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Create</button>
+  @if (!isChange) {
+    <button
+      mat-button
+      [mat-dialog-close]="data"
+      cdkFocusInitial
+    >
+      Create
+    </button>
+  } @else {
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>
+      Edit
+    </button>
+  }
 </mat-dialog-actions>
